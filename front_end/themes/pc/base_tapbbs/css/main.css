@@ -2753,9 +2753,17 @@ shortcodes page css
 }
 
 #notice_list p.title {
-    background:#f2f2f2;
-    font-size:20px;
-    height:40px;
-    line-heigt:20px;
-    padding:10px 0 0 10px;
+    background: #f2f2f2;
+    font-size: 20px;
+    height: 40px;
+    line-heigt: 20px;
+    padding: 10px 0 0 10px;
+}
+
+#goTop {
+    display: none;
+    position: fixed;
+    bottom: 110px;
+    right: 10px;
+    cursor: pointer;
 }

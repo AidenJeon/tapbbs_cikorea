@@ -165,6 +165,10 @@
         <a href = "{BASE_URL}user/message">{lang.new_message} : <span id = "message_count">0</span></a>
     </div>
 
+    <div id="goTop" style="">
+        <i class="fa fa-caret-square-o-up fa-2x"></i>
+    </div>
+
     {tapbbs_profiler}
 
     <script src="{FRONTEND_THIRD_PARTY}jquery.cookie.js"></script>
@@ -220,6 +224,20 @@
 
             SyntaxHighlighter.all();
             SyntaxHighlighter.config.stripBrs = true;
+
+            var $goTop = $('#goTop');
+            $goTop.click(function() {
+                $('body').animate({scrollTop:0});
+            });
+            $(window).scroll(function(){
+                var t = $(window).scrollTop();
+                if (t > 10) {
+                    $goTop.fadeIn();
+                }
+                if (t < 1) {
+                    $goTop.fadeOut();
+                }
+            });
         });
     </script>
 </body>
