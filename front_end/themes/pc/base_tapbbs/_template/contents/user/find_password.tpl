@@ -43,3 +43,5 @@
         </div><!--/.row-->
     </div><!--/.container-->
 </section>
+
+{= this-> xfetch('layout/banner_bottom.tpl')}

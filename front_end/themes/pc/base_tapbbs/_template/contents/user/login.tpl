@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label for="user_id" class="col-sm-3 control-label">{lang.user_id}</label>
                     <div class="col-sm-7">
-                        <input type="text" name="user_id" id="user_id" value="{value_list.user_id}" maxlength="{SETTING_user_id_length_maximum}" class="form-control" required="required" placeholder="{lang.user_id}">
+                        <input type="text" name="user_id" id="user_id" value="{value_list.user_id}" maxlength="{SETTING_user_id_length_maximum}" class="form-control" required="required" placeholder="{lang.user_id}" autofocus>
                     </div>
                 </div>
 
@@ -37,3 +37,5 @@
         </div><!--/.row-->
     </div><!--/.container-->
 </section>
+
+{= this-> xfetch('layout/banner_bottom.tpl')}

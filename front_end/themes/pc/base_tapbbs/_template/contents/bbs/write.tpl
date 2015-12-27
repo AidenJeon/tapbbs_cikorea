@@ -1,7 +1,10 @@
 <section id="blog">
     <div class="container">
+
+        {= this->xfetch('layout/banner_left.tpl')}
+
         <div>
-            <h2><i class="fa fa-users"></i> {BBS_SETTING_bbs_name}</h2>
+            <h2><i class="fa fa-leaf"></i> {BBS_SETTING_bbs_name}</h2>
 
             <form method="post" name="write_form" id="write_form" action = "{BASE_URL}bbs/write/{bbs_id}" onsubmit="return (form_null_check('write_form', '{form_null_check}') && form_minimum_check('write_form', '{form_minimum_check}'));" class="form-horizontal">
 

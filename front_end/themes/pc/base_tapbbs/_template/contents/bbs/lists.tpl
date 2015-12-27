@@ -1,7 +1,10 @@
 <section id="blog">
     <div class="container">
+
+        {= this->xfetch('layout/banner_left.tpl')}
+
         <div>
-            <h2><i class="fa fa-users"></i> {BBS_SETTING_bbs_name}</h2>
+            <h2><i class="fa fa-leaf"></i> {BBS_SETTING_bbs_name}</h2>
             <table class="bbs_table">
                 <colgroup>
                     <col width="60" />

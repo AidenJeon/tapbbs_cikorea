@@ -7,6 +7,7 @@
 {/}
 
 <section id="user-page">
+
     <div class="container">
         <div class="center">
             <h2><i class="fa fa-users"></i> {lang.btn_join}</h2>
@@ -71,3 +72,5 @@
         </div><!--/.row-->
     </div><!--/.container-->
 </section>
+
+{= this-> xfetch('layout/banner_bottom.tpl')}

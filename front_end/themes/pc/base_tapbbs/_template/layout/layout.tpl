@@ -144,22 +144,24 @@
 
     <div id="contents_wrapper">
 
-
         {#contents}
 
         <footer id="footer" class="midnight-blue">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 text-right">
-                        2009-2014 &copy; Codeigniter 한국 사용자 포럼. All Rights Reserved.
+                        2009-2015 &copy; Codeigniter 한국 사용자 포럼. All Rights Reserved.
+                    </div>
+                    <div class="col-sm-12 text-right">
+                        Created by 배강민, 전상민 / Powered by <a href="http://tapbbs.com" target="_blank">TapBBS</a>
                     </div>
                 </div>
             </div>
         </footer><!--/#footer-->
     </div>
 
-    <div id="message_count_div" class="hide">
-        <i class="icon-envelope"></i>&nbsp;
+    <div id="message_count_div" style="display:none">
+        <i class="fa fa-envelope"></i>&nbsp;
         <a href = "{BASE_URL}user/message">{lang.new_message} : <span id = "message_count">0</span></a>
     </div>
 

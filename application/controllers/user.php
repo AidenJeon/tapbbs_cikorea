@@ -617,6 +617,7 @@ class User extends MY_Controller
                 {
                     $modify_fail_msg[] = lang('email_duplicate');
                 }
+
                 if(count($modify_fail_msg) > 0 OR $assign['avatar_file_fail'] !== NULL)
                 {
                     //닉네임, 이메일 중 1개 이상 오류

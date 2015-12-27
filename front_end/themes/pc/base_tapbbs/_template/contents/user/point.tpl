@@ -1,5 +1,7 @@
 <section id="blog">
     <div class="container">
+        {= this->xfetch('layout/banner_left.tpl')}
+
         <div>
             <h2><i class="fa fa-users"></i> {lang.menu_user_point}</h2>
 

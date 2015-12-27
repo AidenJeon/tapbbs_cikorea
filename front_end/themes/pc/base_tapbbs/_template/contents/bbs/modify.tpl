@@ -1,7 +1,10 @@
 <section id="blog">
     <div class="container">
+
+        {= this->xfetch('layout/banner_left.tpl')}
+
         <div>
-            <h2><i class="fa fa-users"></i> {BBS_SETTING_bbs_name}</h2>
+            <h2><i class="fa fa-leaf"></i> {BBS_SETTING_bbs_name}</h2>
 
             <form method="post" name="modify_form" id = "modify_form" action = "{BASE_URL}bbs/modify/{bbs_id}" onsubmit="return (form_null_check('modify_form', '{form_null_check}') && form_minimum_check('modify_form', '{form_minimum_check}'));">
                 <input type="hidden" name="bbs_id" id = "bbs_id" value="{bbs_id}" />

@@ -1,5 +1,8 @@
 <script src="{FRONTEND_THIRD_PARTY}jquery.bxslider/jquery.bxslider.min.js"></script>
 <script src="{FRONTEND_THIRD_PARTY}jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+    {lang: 'ko'}
+</script>
 
 <link rel="stylesheet" href="{FRONTEND_THIRD_PARTY}jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{FRONTEND_THIRD_PARTY}jquery.bxslider/jquery.bxslider.css" type="text/css" />
@@ -20,8 +23,11 @@
 
 <section id="blog">
     <div class="container">
+
+        {= this->xfetch('layout/banner_left.tpl')}
+
         <div>
-            <h2><i class="fa fa-users"></i> {BBS_SETTING_bbs_name}</h2>
+            <h2><i class="fa fa-leaf"></i> {BBS_SETTING_bbs_name}</h2>
 
             <table class="bbs_table">
                 <colgroup>
@@ -61,26 +67,32 @@
                     <td>{view->print_insert_date}</td>
                 </tr>
                 <tr>
-                    <td colspan="4" class="text-right">
-                        {? BBS_SETTING_bbs_comment_used == 1}
-                            <span>{lang.comment} : {view->comment_count}</span>
-                        {/}
+                    <td colspan="4">
+                        <div style="float:left">
+                            <iframe src="//www.facebook.com/plugins/like.php?href=http://{=_SERVER['HTTP_HOST']}{=_SERVER['REQUEST_URI']}&send=false&layout=button_count&width=60&show_faces=false&action=like&colorscheme=light&font=arial&height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; padding-top:5px; width:90px; height:25px;" allowtransparency="true"></iframe>
+                            <g:plusone size="medium" style="float:right"></g:plusone>
+                        </div>
+                        <div class="text-right" style="float:right">
+                            {? BBS_SETTING_bbs_comment_used == 1}
+                                <span>{lang.comment} : {view->comment_count}</span>
+                            {/}
 
-                        {? BBS_SETTING_bbs_vote_article_used == 1}
-                            <span>{lang.vote} : </span><span id="vote_article">{view->vote_count}</span>
-                        {/}
-                        <span>{lang.scrap} : </span><span id="scrap">{view->scrap_count}</span>
-                        <span>{lang.hit} : {view->hit}</span>
-                        {? rss_allow == TRUE}
-                            <span class="rss"><a href="{BASE_URL}bbs/rss/{bbs_id}" target="_blank">RSS</a></span>
-                        {/}
+                            {? BBS_SETTING_bbs_vote_article_used == 1}
+                                <span>{lang.vote} : </span><span id="vote_article">{view->vote_count}</span>
+                            {/}
+                            <span>{lang.scrap} : </span><span id="scrap">{view->scrap_count}</span>
+                            <span>{lang.hit} : {view->hit}</span>
+                            {? rss_allow == TRUE}
+                                <span class="rss"><a href="{BASE_URL}bbs/rss/{bbs_id}" target="_blank">RSS</a></span>
+                            {/}
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="" class="contents">
                         {? view->avatar_used === TRUE}
-                            <div class = "right avatar">
-                                <img src = "{BASE_URL}avatars/{view->user_id}.gif" width = "{SETTING_avatar_limit_image_size_width}" height = "{SETTING_avatar_limit_image_size_height}" alt = "{view->print_name}" />
+                            <div style="float:right;">
+                                <img src="{BASE_URL}avatars/{view->user_id}.gif" width="{SETTING_avatar_limit_image_size_width}" height="{SETTING_avatar_limit_image_size_height}" alt="{view->print_name}" />
                             </div>
                         {/}
                         {view->contents}
@@ -105,7 +117,9 @@
                         {? BBS_SETTING_bbs_vote_article_used == 1 && view->user_idx != USER_INFO_idx}
                             <button type="button" id="btn_vote_article" class="btn btn-small btn-inverse" onclick="vote('article', '<!--{bbs_id}-->', {view->idx}, <!--{SETTING_ajax_timeout}-->);"><i class="icon-thumbs-up icon-white"></i>&nbsp;{lang.vote}</button>
                         {/}
-                        <button type="button" class="btn btn-small btn-warning" onclick="scrap('<!--{bbs_id}-->', <!--{view->idx}-->, <!--{SETTING_ajax_timeout}-->);"><i class="icon-share-alt icon-white"></i>&nbsp;{lang.scrap}</button>
+                        <button type="button" class="btn btn-small btn-warning" style="float:right" onclick="scrap('<!--{bbs_id}-->', <!--{view->idx}-->, <!--{SETTING_ajax_timeout}-->);"><i class="icon-share-alt icon-white"></i>&nbsp;{lang.scrap}</button>
+
+
                     </td>
                 </tr>
                 {/}
@@ -186,6 +200,9 @@
 
     {? BBS_SETTING_bbs_comment_used == 1}
         <div class="container" style="margin-top:50px">
+
+            <div class="banner-left">&nbsp;</div>
+
             <h3>{lang.comment}</h3>
 
             {? allowed_list.view_comment === TRUE}
@@ -298,7 +315,7 @@
         </form>
     </div>
 
-    <div id="hidden_vote_comment" style = "display:none">
+    <div id="hidden_vote_comment" style = "display:none">}
         <form method="post" name="vote_comment_form" id="vote_comment_form">
             <input type="hidden" name="bbs_id" id="bbs_id" value="{bbs_id}" />
             <input type="hidden" name="idx" id="idx" value="" />
@@ -306,21 +323,24 @@
         </form>
     </div>
 
-    <div id="send_message" class="modal hide fade">
-        <form method="post" name="send_message_form" id="send_message_form" data-ajax="false" style="margin-bottom:0px">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>{lang.message}</h3>
+    <div id="send_message" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">{lang.message}</h3>
+                </div>
+                <form method="post" name="send_message_form" id="send_message_form" data-ajax="false" class="form-horizontal">
+                    <div class="modal-body">
+                        TO : <span id="print_receiver_name"></span>
+                        <input type="hidden" name="receiver" id="receiver" value="" />
+                        <p><div align="center"><textarea name="contents" id="contents" rows="5" class="form-control"></textarea></div></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn_close" class="btn btn-default" data-dismiss="modal" aria-hidden="true">{lang.close}</button>
+                        <button type="button" class="btn btn-message" onclick="send_message_exec({SETTING_ajax_timeout});">{lang.send}</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-body">
-                TO : <span id="print_receiver_name"></span>
-                <input type="hidden" name="receiver" id="receiver" value="" />
-                <p><div align="center"><textarea name="contents" id="contents" rows="5" class="span6"></textarea></div></p>
-            </div>
-            <div class="modal-footer">
-                <a href="#" id="btn_close" class="btn" data-dismiss="modal" aria-hidden="true">{lang.close}</a>
-                <a href="#" class="btn btn-primary" onclick="send_message_exec({SETTING_ajax_timeout});">{lang.send}</a>
-            </div>
-        </form>
+        </div>
     </div>
 </section>

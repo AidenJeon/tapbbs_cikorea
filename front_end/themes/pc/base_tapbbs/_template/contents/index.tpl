@@ -6,11 +6,13 @@
 
 <section id="blog">
     <div class="container">
+        <ul id="notice_list" style="display:none"></ul>
+
         <div class="row">
             <div class="features">
                 <div class="col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-question-circle fa-2x"></i> {qna_bbs_name}</h3>
+                        <h3><i class="fa fa-question-circle"></i> {qna_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -41,7 +43,7 @@
                     </div>
 
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-question-circle fa-2x"></i> {etcqna_bbs_name}</h3>
+                        <h3><i class="fa fa-question-circle"></i> {etcqna_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -71,7 +73,7 @@
                     </div>
 
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-book fa-2x"></i> {lecture_bbs_name}</h3>
+                        <h3><i class="fa fa-book"></i> {lecture_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -103,7 +105,7 @@
 
                 <div class="col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-user fa-2x"></i> {recruit_bbs_name}</h3>
+                        <h3><i class="fa fa-user"></i> {recruit_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -133,7 +135,7 @@
                     </div>
 
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-exclamation-triangle fa-2x"></i> {tip_bbs_name}</h3>
+                        <h3><i class="fa fa-exclamation-triangle"></i> {tip_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -163,7 +165,7 @@
                     </div>
 
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-star fa-2x"></i> {news_bbs_name}</h3>
+                        <h3><i class="fa fa-star"></i> {news_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -195,7 +197,7 @@
 
                 <div class="col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-external-link-square fa-2x"></i> {usedci_bbs_name}</h3>
+                        <h3><i class="fa fa-external-link-square"></i> {usedci_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -225,7 +227,7 @@
                     </div>
 
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-code fa-2x"></i> {pds_ci_bbs_name}</h3>
+                        <h3><i class="fa fa-code"></i> {pds_ci_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -255,7 +257,7 @@
                     </div>
 
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-file fa-2x"></i> {pds_normal_bbs_name}</h3>
+                        <h3><i class="fa fa-file"></i> {pds_normal_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -287,7 +289,7 @@
 
                 <div class="col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-bell fa-2x"></i> {notice_bbs_name}</h3>
+                        <h3><i class="fa fa-bell"></i> {notice_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -317,7 +319,7 @@
                     </div>
 
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-comments fa-2x"></i> {community_bbs_name}</h3>
+                        <h3><i class="fa fa-comments"></i> {community_bbs_name}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -347,7 +349,7 @@
                     </div>
 
                     <div class="pull-left widget archieve recently">
-                        <h3><i class="fa fa-comments-o fa-2x"></i> {lang.recently_comment}</h3>
+                        <h3><i class="fa fa-comments-o"></i> {lang.recently_comment}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="blog_archieve">
@@ -375,3 +377,22 @@
         </div>
     </div>
 </section>
+
+<script>
+$(document).ready(function() {
+    $.get('/ci/getNotice', null, function(r) {
+        var $notice = $('#notice_list');
+        for (var i = 0; i < r.length; i++) {
+
+            r[i].title = '<a href="/bbs/view/notice?idx=' + r[i].idx + '">' + r[i].title + '</a>';
+            var title = '<p class="title">' + r[i].title + '</p>';
+            var content = '<p class="content">' + r[i].contents + '</p>';
+            $notice.append('<li>' + title + content + '</li>');
+        }
+
+        if (r.length > 0) {
+            $notice.show();
+        }
+    }, 'json');
+});
+</script>

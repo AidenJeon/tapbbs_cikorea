@@ -1,9 +1,13 @@
 {? validation_message != ''}
-<script type="text/javascript">jAlert('{validation_message}', lang['alert']);</script>
+    <script type="text/javascript">jAlert('{validation_message}', lang['alert']);</script>
 {/}
 
 {? result_msg != ''}
-<script type="text/javascript">jAlert('{result_msg}', lang['alert']);</script>
+    <script type="text/javascript">jAlert('{result_msg}', lang['alert']);</script>
+{/}
+
+{? avatar_file_fail != ''}
+<script type="text/javascript">jAlert('{avatar_file_fail}', lang['alert']);</script>
 {/}
 
 <section id="user-page">
@@ -24,14 +28,14 @@
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">{lang.password}</label>
                     <div class="col-sm-7">
-                        <input type="password" name="password" id="password" value="" maxlength="{SETTING_user_password_length_maximum}" class="form-control" required="required" placeholder="{lang.password}">
+                        <input type="password" name="password" id="password" value="" maxlength="{SETTING_user_password_length_maximum}" class="form-control" placeholder="{lang.password}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="password_confirm" class="col-sm-3 control-label">{lang.password_confirm}</label>
                     <div class="col-sm-7">
-                        <input type="password" name="password_confirm" id="password_confirm" value="" maxlength="{SETTING_user_password_length_maximum}" class="form-control" required="required" placeholder="{lang.password_confirm}">
+                        <input type="password" name="password_confirm" id="password_confirm" value="" maxlength="{SETTING_user_password_length_maximum}" class="form-control" placeholder="{lang.password_confirm}">
                     </div>
                 </div>
 
@@ -120,3 +124,5 @@
         </div><!--/.row-->
     </div><!--/.container-->
 </section>
+
+{= this-> xfetch('layout/banner_bottom.tpl')}

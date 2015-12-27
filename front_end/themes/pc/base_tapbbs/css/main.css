@@ -2327,20 +2327,20 @@ ul.sidebar-gallery {
 
 #blog h2 {
     color: #333;
-    font-size:28px;
+    font-size:24px;
     margin:0 auto;
-    width:1032px
+    width:730px
 }
 
 #blog h3 {
     color: #333;
     font-size:18px;
     margin:0 auto;
-    width:1032px
+    width:730px
 }
 
 .bbs_table {
-    width:1032px;
+    width:910px;
     margin:10px auto 20px auto;
     border-collapse: separate;
     border-spacing: 0 1px;
@@ -2351,7 +2351,7 @@ ul.sidebar-gallery {
     color:#fff;
     text-align:center;
     padding : 10px 8px;
-    font-size:14px;
+    font-size:12px;
 }
 
 .bbs_table td {
@@ -2646,7 +2646,7 @@ shortcodes page css
 }
 
 #footer a {
-    color: #fff;
+    color: #7aba7b;
 }
 
 #footer a:hover {
@@ -2665,7 +2665,7 @@ shortcodes page css
 }
 
 .container {
-    width: 1190px;
+    width: 1200px;
     padding: 0 auto;
 }
 
@@ -2705,4 +2705,57 @@ shortcodes page css
 
 .comment_count {
     margin-right:10px;
+}
+
+#message_count_div{
+    position: fixed;
+    bottom:0;
+    right:0;
+    width:150px;
+    background:#fff;
+    padding:10px;
+    border:3px solid #444;
+}
+
+.banner-left {
+    padding-top:25px;
+    padding-left:0px;
+    width:160px;
+    float:left;
+}
+
+.banner-left img {
+    width:100%;
+    margin-top:20px;
+}
+
+.banner-bottom {
+    width: 500px;
+    margin: 20px auto;
+}
+
+.banner-bottom img {
+    margin-right:20px;
+}
+
+#notice_list {
+    list-style: none;
+    width:1120px;
+    margin-bottom:50px;
+}
+
+#notice_list a {
+    color: #888;
+}
+
+#notice_list a:hover, a:visited {
+    color: #222;
+}
+
+#notice_list p.title {
+    background:#f2f2f2;
+    font-size:20px;
+    height:40px;
+    line-heigt:20px;
+    padding:10px 0 0 10px;
 }
