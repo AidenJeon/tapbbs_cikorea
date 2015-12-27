@@ -2335,8 +2335,16 @@ ul.sidebar-gallery {
 #blog h3 {
     color: #333;
     font-size:18px;
-    margin:0 auto;
+    margin:0 auto 5px auto;
     width:730px
+}
+
+#blog a {
+    color: #333;
+}
+
+#blog a:hover {
+    color: #333;
 }
 
 .bbs_table {

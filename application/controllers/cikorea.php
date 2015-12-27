@@ -1,5 +1,5 @@
 <?php
-class Ci extends MY_Controller
+class Cikorea extends MY_Controller
 {
     public function getNotice()
     {

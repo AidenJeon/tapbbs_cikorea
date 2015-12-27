@@ -380,7 +380,7 @@
 
 <script>
 $(document).ready(function() {
-    $.get('/ci/getNotice', null, function(r) {
+    $.get('/cikorea/getNotice', null, function(r) {
         var $notice = $('#notice_list');
         for (var i = 0; i < r.length; i++) {
 
